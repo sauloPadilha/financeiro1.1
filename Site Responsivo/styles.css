@@ -1,0 +1,766 @@
+/* Configurações globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212;
+  color: #fff;
+  scroll-behavior: smooth;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Ocultar todas as páginas inicialmente */
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+header {
+  background: rgba(0, 0, 0, 0.6); /* Fundo semitransparente */
+  padding: 1em;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between; /* Logo à esquerda, links à direita */
+  align-items: center;
+  height: 80px; /* Aumenta a altura do cabeçalho */
+}
+
+.logo-img {
+  height: 100px; /* Define a altura inicial */
+  width: auto; /* Mantém a proporção da imagem */
+  display: block; /* Garante que seja tratada como um bloco */
+  margin: 0; /* Remove margens desnecessárias */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Transições suaves para hover */
+}
+
+/* Para alterar o tamanho no hover */
+.logo-img:hover {
+  transform: scale(1.1); /* Aumenta ligeiramente o tamanho no hover */
+  opacity: 0.9; /* Reduz um pouco a opacidade no hover */
+}
+
+.logo-container {
+  display: flex; /* Alinha a imagem e o texto lado a lado */
+  align-items: center; /* Centraliza verticalmente a imagem e o texto */
+  gap: 1em; /* Espaçamento entre a imagem e o texto */
+  padding: 1em; /* Adiciona um pouco de espaço ao redor */
+}
+
+.logo-text h1 {
+  font-size: 1.8em; /* Tamanho do título */
+  color: rgba(255, 255, 255, 0.9); /* Texto branco translúcido */
+  margin: 0; /* Remove margens desnecessárias */
+}
+
+.logo-text p {
+  font-size: 1em; /* Tamanho do parágrafo */
+  color: rgba(221, 221, 221, 0.8); /* Texto cinza claro translúcido */
+  margin: 0; /* Remove margens desnecessárias */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2em; /* Maior espaçamento entre os botões */
+  margin: 0;
+  margin-left: auto; /* Empurra os links para a direita */
+}
+
+.nav-links li a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.2em; /* Tamanho maior para destacar */
+  padding: 0.8em 1.5em; /* Aumenta a área clicável */
+  border-radius: 5px; /* Bordas arredondadas para os botões */
+  transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #ff4c4c;
+  background: rgba(255, 255, 255, 0.1); /* Fundo leve no hover */
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+      display: block;
+  }
+
+  .nav-links {
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8); /* Fundo mais opaco para dispositivos móveis */
+      display: none; /* Oculta o menu inicialmente */
+  }
+
+  .nav-links.active {
+      display: flex; /* Exibe o menu ao clicar no botão */
+  }
+
+  .nav-links li a {
+      padding: 1em; /* Botões mais altos em telas menores */
+  }
+}
+
+/* Seção Hero */
+.hero {
+  background: linear-gradient(135deg, rgba(51, 50, 50, 0.8), rgba(26, 25, 25, 0.8)); /* Gradiente transparente */
+  text-align: center;
+  color: #fff;
+  padding: 10em 3em; /* Aumentado o espaçamento interno */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.5); /* Sombra para destacar */
+}
+
+.hero h1 {
+  font-size: 4em; /* Texto maior para destaque */
+  font-weight: 700;
+  margin-bottom: 0.8em; /* Espaçamento maior abaixo do título */
+  text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6); /* Sombra mais pronunciada */
+  color: rgba(255, 255, 255, 0.9); /* Texto com leve transparência */
+}
+
+.hero p {
+  font-size: 1.5em; /* Texto ligeiramente maior */
+  margin-bottom: 2em; /* Espaçamento aumentado abaixo do parágrafo */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(221, 221, 221, 0.8); /* Texto em cinza translúcido */
+}
+
+.hero .btn-primary {
+  padding: 1.5em 3em; /* Botão maior */
+  background: rgba(255, 0, 0, 0.8); /* Vermelho translúcido */
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50px; /* Bordas arredondadas */
+  font-size: 1.4em; /* Texto maior */
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Sombra mais destacada */
+}
+
+.hero .btn-primary:hover {
+  background: rgba(204, 0, 0, 0.9); /* Escurece no hover */
+  transform: translateY(-5px); /* Elevação no hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Intensifica a sombra no hover */
+}
+.intro-content {
+  padding: 4em 2em;
+  background: rgba(26, 26, 26, 0.8); /* Fundo semitransparente */
+  color: #fff;
+  text-align: center; /* Centraliza o texto */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5); /* Sombra */
+}
+
+.intro-content h2 {
+  font-size: 2.5em;
+  color: rgba(255, 0, 0, 0.9); /* Vermelho translúcido */
+  margin-bottom: 1em;
+}
+
+.intro-content h3 {
+  font-size: 2em;
+  color: rgba(255, 76, 76, 0.9); /* Vermelho translúcido */
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.intro-content p {
+  font-size: 1.3em;
+  line-height: 1.6;
+  color: rgba(221, 221, 221, 0.9); /* Cinza claro translúcido */
+  margin-bottom: 1.5em;
+}
+
+.intro-content p em {
+  color: rgba(255, 255, 255, 0.9); /* Texto em itálico mais destacado */
+  font-size: 1.4em;
+  font-style: italic;
+}
+
+.intro-content strong {
+  color: rgba(255, 0, 0, 0.9); /* Destaque vermelho */
+}
+
+/* Seção Sobre */
+.about {
+  padding: 4em 2em;
+  background: rgba(26, 26, 26, 0.8); /* Fundo semitransparente */
+  color: #fff;
+  text-align: center;
+  border-radius: 8px; /* Bordas arredondadas para suavidade */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5); /* Sombra para destaque */
+}
+
+.about h2 {
+  font-size: 2.8em; /* Título principal */
+  margin-bottom: 1.5em;
+  color: rgba(255, 0, 0, 0.9); /* Vermelho translúcido */
+}
+
+.about p {
+  margin-bottom: 1.5em;
+  color: rgba(221, 221, 221, 0.9); /* Cinza claro translúcido */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6; /* Melhor legibilidade */
+}
+
+.info-list {
+  margin: 3em auto; /* Centraliza a lista */
+  list-style: none;
+  text-align: center; /* Centraliza os itens */
+  padding: 0;
+}
+
+.info-list li {
+  font-size: 1.3em; /* Texto maior */
+  padding: 1em 1.5em; /* Maior área clicável */
+  margin-bottom: 1.5em; /* Espaçamento entre os itens */
+  border-left: 6px solid rgba(255, 76, 76, 0.8); /* Borda esquerda com transparência */
+  background: rgba(42, 42, 42, 0.7); /* Fundo semitransparente */
+  color: #fff;
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5); /* Sombra mais pronunciada */
+  display: inline-block; /* Garante largura proporcional */
+  max-width: 800px; /* Limita a largura dos itens */
+  text-align: left; /* Mantém o texto alinhado à esquerda */
+}
+
+.info-list li:hover {
+  transform: translateY(-5px); /* Elevação no hover */
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.6); /* Sombra intensificada */
+}
+
+.faq {
+  padding: 4em 2em;
+  background: rgba(26, 26, 26, 0.8); /* Fundo semitransparente */
+  color: #fff;
+  text-align: center; /* Centraliza todo o conteúdo */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5); /* Sombra */
+  margin-top: 2em;
+}
+
+.faq h3 {
+  font-size: 2.5em;
+  margin-bottom: 1.5em;
+  color: rgba(255, 0, 0, 0.9); /* Vermelho translúcido */
+}
+
+.faq-item {
+  margin-bottom: 2em;
+  max-width: 800px; /* Limita a largura */
+  margin-left: auto;
+  margin-right: auto; /* Centraliza os itens */
+  text-align: left; /* Alinha o texto à esquerda */
+}
+
+.faq-item h4 {
+  font-size: 1.8em; /* Destaque maior para as perguntas */
+  margin-bottom: 0.8em;
+  color: rgba(255, 76, 76, 0.9); /* Vermelho translúcido */
+}
+
+.faq-item p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: rgba(221, 221, 221, 0.9); /* Cinza claro translúcido */
+  text-align: justify; /* Justifica o texto */
+  margin: 0 auto;
+}
+
+/* Seção Pagamentos */
+.payments {
+  padding: 4em 2em;
+  background: rgba(26, 26, 26, 0.8); /* Fundo semitransparente */
+  text-align: center;
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5); /* Sombra */
+}
+
+.payments h2 {
+  font-size: 2.8em; /* Título maior */
+  margin-bottom: 1.5em;
+  color: rgba(255, 0, 0, 0.9); /* Vermelho translúcido */
+}
+
+.payment-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em; /* Espaçamento entre as opções */
+}
+
+.payment-qr {
+  text-align: center; /* Centraliza o conteúdo */
+  margin-top: 2em; /* Adiciona espaçamento acima */
+}
+
+.payment-qr h3 {
+  font-size: 1.8em;
+  margin-bottom: 1em; /* Espaçamento entre o título e o QR Code */
+  color: rgba(255, 0, 0, 0.9); /* Vermelho translúcido */
+}
+
+.payment-qr img {
+  width: 200px; /* Define a largura da imagem */
+  height: auto; /* Mantém a proporção */
+  border-radius: 8px; /* Opcional: Bordas arredondadas */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5); /* Sombra para destaque */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transições para hover */
+}
+
+.payment-qr img:hover {
+  transform: scale(1.05); /* Leve aumento no hover */
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.6); /* Intensifica a sombra no hover */
+}
+
+.pix-key {
+  text-align: center; /* Centraliza o texto e botão */
+  margin-top: 1em; /* Espaçamento entre o QR Code e a chave PIX */
+}
+
+.pix-key p {
+  font-size: 1.5em;
+  color: rgba(255, 255, 255, 0.9); /* Texto branco translúcido */
+  margin-bottom: 0.5em; /* Espaçamento abaixo do título */
+}
+
+.pix-key-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em; /* Espaçamento entre a chave e o botão */
+  font-size: 1.2em;
+  color: rgba(221, 221, 221, 0.9); /* Cinza claro translúcido */
+}
+
+.copy-btn {
+  padding: 0.5em 1em;
+  font-size: 1em;
+  font-weight: bold;
+  background: rgba(255, 76, 76, 0.8); /* Vermelho translúcido */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombra */
+}
+
+.copy-btn:hover {
+  background: rgba(204, 0, 0, 0.9); /* Escurece no hover */
+  transform: translateY(-3px); /* Elevação no hover */
+}
+
+.payment-card {
+  background: rgba(42, 42, 42, 0.8); /* Fundo semitransparente */
+  padding: 2em;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5); /* Sombra para destaque */
+  text-align: center;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.payment-card:hover {
+  transform: translateY(-5px); /* Elevação no hover */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6); /* Intensifica a sombra */
+}
+
+.payment-card h3 {
+  font-size: 1.8em; /* Texto maior */
+  margin-bottom: 0.8em;
+  color: rgba(255, 76, 76, 0.9); /* Vermelho translúcido */
+}
+
+.payment-card p {
+  font-size: 1.2em; /* Texto maior */
+  color: rgba(221, 221, 221, 0.8); /* Cinza claro translúcido */
+}
+
+/* Tabelas de Preços */
+.pricing {
+  padding: 4em 2em;
+  background: rgba(26, 26, 26, 0.8); /* Fundo semitransparente */
+  text-align: center;
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5); /* Sombra */
+}
+
+.pricing h2 {
+  font-size: 2.8em; /* Título maior */
+  margin-bottom: 1.5em;
+  color: rgba(255, 0, 0, 0.9); /* Vermelho translúcido */
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1.5em; /* Maior espaçamento entre os botões */
+  margin-bottom: 2em;
+}
+
+.btn-toggle {
+  padding: 1em 2em; /* Botões maiores */
+  background: rgba(255, 76, 76, 0.8); /* Fundo vermelho translúcido */
+  color: #fff;
+  border: none;
+  border-radius: 5px; /* Bordas arredondadas */
+  font-size: 1.2em; /* Texto maior */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombra */
+}
+
+.btn-toggle:hover {
+  background: rgba(204, 0, 0, 0.9); /* Fundo mais escuro no hover */
+  transform: translateY(-3px); /* Elevação no hover */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* Sombra intensificada */
+}
+
+.btn-toggle.active {
+  background: rgba(139, 0, 0, 0.9); /* Vermelho escuro para botão ativo */
+  transform: scale(1.05); /* Leve aumento do botão ativo */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5); /* Sombra para destaque */
+}
+
+.pricing-table {
+  display: none;
+  margin: 2em auto;
+  width: 90%;
+  max-width: 900px; /* Tabelas mais amplas */
+  border-collapse: collapse;
+  border-radius: 10px; /* Bordas arredondadas */
+  overflow: hidden;
+  background: rgba(42, 42, 42, 0.8); /* Fundo semitransparente */
+  color: #fff;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5); /* Sombra */
+}
+
+.pricing-table.active {
+  display: table; /* Mostra a tabela ativa */
+}
+
+.pricing-table th,
+.pricing-table td {
+  padding: 1.5em; /* Mais espaçamento nas células */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Bordas suaves */
+  text-align: center;
+}
+
+.pricing-table thead {
+  background: rgba(139, 0, 0, 0.9); /* Fundo vermelho escuro */
+}
+
+.pricing-table tbody tr:nth-child(odd) {
+  background: rgba(255, 76, 76, 0.1); /* Fundo leve para linhas ímpares */
+}
+
+.pricing-table tbody tr:hover {
+  background: rgba(255, 76, 76, 0.2); /* Realça no hover */
+}
+
+/* Depoimentos */
+.testimonials {
+  padding: 4em 2em;
+  background: rgba(26, 26, 26, 0.8); /* Fundo semitransparente */
+  text-align: center;
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5); /* Sombra para destaque */
+}
+
+.testimonials h2 {
+  font-size: 2.8em; /* Título maior */
+  margin-bottom: 1.5em;
+  color: rgba(255, 0, 0, 0.9); /* Vermelho translúcido */
+}
+
+.testimonial-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em; /* Espaçamento entre os depoimentos */
+}
+
+blockquote {
+  background: rgba(42, 42, 42, 0.8); /* Fundo semitransparente */
+  padding: 2em;
+  border-left: 6px solid rgba(255, 76, 76, 0.8); /* Borda vermelha translúcida */
+  border-radius: 10px; /* Bordas arredondadas */
+  max-width: 400px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5); /* Sombra mais pronunciada */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave para hover */
+}
+
+blockquote:hover {
+  transform: translateY(-5px); /* Elevação no hover */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6); /* Intensifica a sombra no hover */
+}
+
+blockquote p {
+  color: rgba(255, 255, 255, 0.9); /* Texto branco translúcido */
+  font-style: italic;
+  margin-bottom: 1.2em; /* Espaçamento maior abaixo do texto */
+  font-size: 1.2em; /* Texto ligeiramente maior */
+}
+
+blockquote cite {
+  display: block;
+  font-weight: bold;
+  text-align: right;
+  color: rgba(255, 76, 76, 0.9); /* Vermelho translúcido */
+  font-size: 1.1em; /* Texto um pouco maior */
+}
+
+/* Botão Flutuante */
+.btn-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 1em;
+  border-radius: 50%;
+  font-size: 1.5em;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-float:hover {
+  background: #cc0000;
+  transform: scale(1.1);
+}
+
+/* Modais */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #1a1a1a;
+  padding: 2em;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+  position: relative;
+  color: #fff;
+}
+
+.modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5em;
+  color: #ff4c4c;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.modal-content .close:hover {
+  color: #fff;
+}
+/* Rodapé */
+footer {
+  background-color: #1a1a1a;
+  color: #ddd;
+  padding: 2em 1em;
+  font-size: 0.9em;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2em;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-section h3 {
+  color: #fff;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.5em;
+}
+
+.footer-section ul li a {
+  color: #ff4c4c;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2em;
+  font-size: 0.8em;
+  color: #777;
+  border-top: 1px solid #333;
+  padding-top: 1em;
+}
+
+/* Botão Flutuante para Discord */
+.btn-discord {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #5865F2;
+  border-radius: 50%;
+  padding: 0.5em;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-discord img {
+  width: 40px;
+  height: 40px;
+}
+
+.btn-discord:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-image: url('imagens/background.jpg'); /* Substitua pelo caminho correto da sua imagem */
+  background-size: cover; /* Faz com que a imagem cubra toda a área */
+  background-repeat: no-repeat; /* Impede que a imagem se repita */
+  background-position: center center; /* Centraliza a imagem no eixo horizontal e vertical */
+  background-attachment: fixed; /* Torna o background estático, mesmo ao rolar a página */
+  color: #fff;
+  line-height: 1.6;
+}
+
+.booster-info {
+  display: flex; /* Habilita flexbox */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  height: auto; /* Remove dependência de altura fixa */
+  margin: 1em 0; /* Margem mínima acima e abaixo */
+  background: rgba(26, 26, 26, 0.8); /* Fundo semitransparente */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); /* Sombra reduzida */
+  padding: 0.5em 1em; /* Reduz padding interno */
+}
+
+.booster-content {
+  display: flex; /* Alinha a imagem e o texto lado a lado */
+  align-items: center; /* Centraliza verticalmente dentro do bloco */
+  gap: 1em; /* Espaçamento menor entre a imagem e o texto */
+  max-width: 90%; /* Limita a largura do conteúdo */
+}
+
+.booster-img {
+  width: 400px; /* Reduz o tamanho da imagem */
+  height: auto; /* Mantém a proporção */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3); /* Sombra menor */
+}
+
+.booster-details-container {
+  text-align: left; /* Alinha o texto à esquerda */
+}
+
+.booster-details {
+  list-style: none; /* Remove os marcadores da lista */
+  padding: 0;
+  margin: 0;
+  line-height: 1.4; /* Reduz o espaçamento entre linhas */
+  color: rgba(221, 221, 221, 0.9); /* Cinza claro translúcido */
+}
+
+.booster-details li {
+  font-size: 1.1em; /* Texto um pouco menor */
+  margin-bottom: 0.5em; /* Reduz espaço entre itens */
+}
+
+.booster-details strong {
+  color: rgba(255, 76, 76, 0.9); /* Destaque em vermelho translúcido */
+}
+
+.highlight-text {
+  margin-top: 2em; /* Espaçamento superior */
+  margin-bottom: 2em; /* Espaçamento inferior */
+  padding: 2em; /* Espaçamento interno */
+  background: rgba(255, 76, 76, 0.1); /* Fundo vermelho claro translúcido */
+  border-left: 6px solid rgba(255, 76, 76, 0.8); /* Borda lateral vermelha */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  text-align: left; /* Alinha o texto à esquerda */
+}
+
+.highlight-text p {
+  font-size: 1.4em; /* Aumenta o tamanho da fonte */
+  line-height: 1.8; /* Aumenta a altura da linha para melhorar a leitura */
+  color: rgba(255, 255, 255, 0.9); /* Texto branco translúcido */
+  margin-bottom: 1em; /* Espaçamento entre os parágrafos */
+}
